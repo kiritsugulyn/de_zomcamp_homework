@@ -1,4 +1,4 @@
-Question 1
+# Question 1
 
 Command:
 docker --help
@@ -9,7 +9,7 @@ Result:
 rmi         Remove one or more images
 
 ----------------------------------------------------------------------------------------------------
-Question 2 
+# Question 2 
 
 Command:
 docker run -it --entrypoint="bash" python:3.12.8
@@ -19,7 +19,7 @@ Result:
 pip 24.3.1 from /usr/local/lib/python3.12/site-packages/pip (python 3.12)
 
 ----------------------------------------------------------------------------------------------------
-Question 3
+# Question 3
 
 SQL Query:
 SELECT COUNT(*) FROM public.green_taxi_data
@@ -29,7 +29,7 @@ Result:
 17417
 
 ----------------------------------------------------------------------------------------------------
-Question 4
+# Question 4
 
 SQL Query:
 SELECT DATE(lpep_pickup_datetime) pickup_date, MAX(trip_distance) max_trip_distance FROM public.green_taxi_data
@@ -42,7 +42,7 @@ Result:
 "2019-10-31"	515.89
 
 ----------------------------------------------------------------------------------------------------
-Question 5
+# Question 5
 
 SQL Query:
 SELECT MIN(b."Zone")
@@ -58,7 +58,7 @@ Result:
 "Morningside Heights"
 
 ----------------------------------------------------------------------------------------------------
-Question 6
+# Question 6
 
 SQL Query:
 SELECT c."Zone"
@@ -77,7 +77,7 @@ Result:
 "East New York"
 
 ----------------------------------------------------------------------------------------------------
-Question 7
+# Question 7
 
 Commands:
 terraform init
