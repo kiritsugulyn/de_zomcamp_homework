@@ -77,12 +77,12 @@ SELECT c."Zone"
 FROM public.green_taxi_data a
 JOIN public.zones b ON a."PULocationID" = b."LocationID"
 JOIN public.zones c ON a."DOLocationID" = c."LocationID"
-WHERE b."Zone" = 'East Harlem North'
+WHERE b."Zone" = 'East Harlem North' AND a.lpep_pickup_datetime >= '2019-10-01' AND a.lpep_dropoff_datetime < '2019-11-01'
 AND a.tip_amount = (
-	SELECT MAX(public.green_taxi_data.tip_amount)
+	SELECT MAX(tip_amount)
 	FROM public.green_taxi_data
-	JOIN public.zones ON public.green_taxi_data."PULocationID" = public.zones."LocationID"
-	WHERE public.zones."Zone" = 'East Harlem North' 
+	JOIN public.zones ON "PULocationID" = "LocationID"
+	WHERE "Zone" = 'East Harlem North' AND lpep_pickup_datetime >= '2019-10-01' AND lpep_dropoff_datetime < '2019-11-01'
 )
 
 Result:
