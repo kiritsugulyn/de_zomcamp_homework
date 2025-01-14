@@ -1,15 +1,4 @@
-# Question 1
-
-Command:
-docker --help
-docker build --help
-docker run --help
-
-Result:
-rmi         Remove one or more images
-
-----------------------------------------------------------------------------------------------------
-# Question 2 
+# Question 1 
 
 Command:
 docker run -it --entrypoint="bash" python:3.12.8
@@ -19,14 +8,37 @@ Result:
 pip 24.3.1 from /usr/local/lib/python3.12/site-packages/pip (python 3.12)
 
 ----------------------------------------------------------------------------------------------------
+# Question 2 
+
+![alt text](image-1.png)
+
+----------------------------------------------------------------------------------------------------
 # Question 3
 
 SQL Query:
-SELECT COUNT(*) FROM public.green_taxi_data
-WHERE DATE(lpep_pickup_datetime) = '2019-10-18' and DATE(lpep_dropoff_datetime) = '2019-10-18'
+SELECT 1 idx, '<=1' distance, COUNT(*) counts FROM public.green_taxi_data
+WHERE trip_distance <= 1 AND lpep_pickup_datetime >= '2019-10-01' AND lpep_dropoff_datetime < '2019-11-01'
+UNION
+SELECT 2 idx, '1-3' distance, COUNT(*) counts FROM public.green_taxi_data
+WHERE trip_distance > 1 AND trip_distance <= 3 AND lpep_pickup_datetime >= '2019-10-01' AND lpep_dropoff_datetime < '2019-11-01'
+UNION
+SELECT 3 idx, '3-7' distance, COUNT(*) counts FROM public.green_taxi_data
+WHERE trip_distance > 3 AND trip_distance <= 7 AND lpep_pickup_datetime >= '2019-10-01' AND lpep_dropoff_datetime < '2019-11-01'
+UNION
+SELECT 4 idx, '7-10' distance, COUNT(*) counts FROM public.green_taxi_data
+WHERE trip_distance > 7 AND trip_distance <= 10 AND lpep_pickup_datetime >= '2019-10-01' AND lpep_dropoff_datetime < '2019-11-01'
+UNION
+SELECT 5 idx, '>10' distance, COUNT(*) counts FROM public.green_taxi_data
+WHERE trip_distance > 10 AND lpep_pickup_datetime >= '2019-10-01' AND lpep_dropoff_datetime < '2019-11-01'
+ORDER BY idx
 
 Result:
-17417
+"distance"	"counts"
+"<=1"	104802
+"1-3"	198924
+"3-7"	109603
+"7-10"	27678
+">10"	35189
 
 ----------------------------------------------------------------------------------------------------
 # Question 4
@@ -81,81 +93,9 @@ Result:
 
 Commands:
 terraform init
-terraform plan
-terraform apply
+terraform apply -auto-approve
+![alt text](image.png)
+![alt text](image-2.png)
 terraform destroy
-
-Result:
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  # google_bigquery_dataset.demo_dataset will be created
-  + resource "google_bigquery_dataset" "demo_dataset" {
-      + creation_time              = (known after apply)
-      + dataset_id                 = "kiritsugulyn_demo_dataset"
-      + default_collation          = (known after apply)
-      + delete_contents_on_destroy = false
-      + effective_labels           = (known after apply)
-      + etag                       = (known after apply)
-      + id                         = (known after apply)
-      + is_case_insensitive        = (known after apply)
-      + last_modified_time         = (known after apply)
-      + location                   = "asia-southeast1"
-      + max_time_travel_hours      = (known after apply)
-      + project                    = "versatile-being-445714-t8"
-      + self_link                  = (known after apply)
-      + storage_billing_model      = (known after apply)
-      + terraform_labels           = (known after apply)
-
-      + access (known after apply)
-    }
-
-  # google_storage_bucket.demo-bucket will be created
-  + resource "google_storage_bucket" "demo-bucket" {
-      + effective_labels            = (known after apply)
-      + force_destroy               = true
-      + id                          = (known after apply)
-      + location                    = "ASIA-SOUTHEAST1"
-      + name                        = "kiritsugulyn_demo_bucket"
-      + project                     = (known after apply)
-      + public_access_prevention    = (known after apply)
-      + self_link                   = (known after apply)
-      + storage_class               = "STANDARD"
-      + terraform_labels            = (known after apply)
-      + uniform_bucket_level_access = (known after apply)
-      + url                         = (known after apply)
-
-      + lifecycle_rule {
-          + action {
-              + type          = "AbortIncompleteMultipartUpload"
-                # (1 unchanged attribute hidden)
-            }
-          + condition {
-              + age                    = 1
-              + matches_prefix         = []
-              + matches_storage_class  = []
-              + matches_suffix         = []
-              + with_state             = (known after apply)
-                # (3 unchanged attributes hidden)
-            }
-        }
-
-      + versioning (known after apply)
-
-      + website (known after apply)
-    }
-
-Plan: 2 to add, 0 to change, 0 to destroy.
-
-Do you want to perform these actions?
-  Terraform will perform the actions described above.
-  Only 'yes' will be accepted to approve.
-
-  Enter a value: yes
-
-google_bigquery_dataset.demo_dataset: Creating...
-google_storage_bucket.demo-bucket: Creating...
-google_bigquery_dataset.demo_dataset: Creation complete after 2s [id=projects/versatile-being-445714-t8/datasets/kiritsugulyn_demo_dataset]
-google_storage_bucket.demo-bucket: Creation complete after 3s [id=kiritsugulyn_demo_bucket]
+![alt text](image-4.png)
+![alt text](image-3.png)

@@ -6,3 +6,5 @@ ny_taxi_postgres_data/
 *.tfstate.*
 .terraform.lock.hcl
 variables.tf
+vol-pgdata/
+vol-pgadmin_data/
