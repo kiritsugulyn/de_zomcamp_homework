@@ -26,7 +26,10 @@ WHERE filename LIKE '%2020%'
 ----------------------------------------------------
 # Question 5
 
-Tried 3 times: 195, 194, 195
+SELECT COUNT(*) FROM public.yellow_tripdata
+WHERE filename LIKE '%2021-03%'
+
+1925152
 
 ----------------------------------------------------
 # Question 6
