@@ -12,3 +12,12 @@ Redpanda Cluster
 TOPIC        STATUS
 green-trips  OK
 
+# Question 3
+True
+
+# Question 4
+36.06628751754761
+
+# Question 5
+
+
